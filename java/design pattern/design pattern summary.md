@@ -1,16 +1,13 @@
 #Creational Pattern
 
 ##Factory Method 
-provides a simple decision making class that
-returns one of several possible subclasses of an abstract base class depending
-on the data that are provided.
+provides a simple decision making class that returns one of several possible subclasses of 
+an abstract base class depending on the data that are provided.
 ##Abstract Factory Method 
-provides an interface to create and
-return one of several families of related objects.
+provides an interface to create and return one of several families of related objects.
 ##Builder Pattern 
-separates the construction of a complex object
-from its representation, so that several different representations can be created
-depending on the needs of the program.
+separates the construction of a complex object from its representation, so that several 
+different representations can be created depending on the needs of the program.
 ##Prototype Pattern 
 starts with an initialized and instantiated
 class and copies or clones it to make new instances rather than creating new
