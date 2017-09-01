@@ -13,7 +13,7 @@
  html,css,js,es6 <br/>
  es6参考地址:<br/>
  [火狐官网](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
-[es6](http://es6.ruanyifeng.com/)
+[ECMAScript 6 入门](http://es6.ruanyifeng.com/)
 
 ###环境准备
   node.js npm react-dev-tools
