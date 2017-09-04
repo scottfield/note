@@ -18,3 +18,17 @@ check the configuration
 ```bash
 $ git config  user.name
 ```
+##create a new repository on the command line
+```
+echo "# book" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/scottfield/book.git
+git push -u origin master
+```
+##push an existing repository from the command line
+```
+git remote add origin https://github.com/scottfield/book.git
+git push -u origin master
+```
