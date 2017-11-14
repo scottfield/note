@@ -32,3 +32,7 @@ git push -u origin master
 git remote add origin https://github.com/scottfield/book.git
 git push -u origin master
 ```
+##undo current commit
+```
+git reset --soft HEAD^
+```
