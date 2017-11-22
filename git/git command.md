@@ -1,3 +1,9 @@
+
+##get help information
+```
+git <commandname> --help
+```
+
 ##Setting your username in Git
 - Setting your Git username for every repository on your computer
 ```bash
@@ -35,4 +41,8 @@ git push -u origin master
 ##undo current commit
 ```
 git reset --soft HEAD^
+```
+##undo uncommitted file
+```
+git checkout path/to/file
 ```
