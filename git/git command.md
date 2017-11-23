@@ -46,3 +46,7 @@ git reset --soft HEAD^
 ```
 git checkout path/to/file
 ```
+##remember password
+```
+git config --global credential.helper wincred
+```
