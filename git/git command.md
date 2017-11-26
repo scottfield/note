@@ -46,6 +46,11 @@ git reset --soft HEAD^
 ```
 git checkout path/to/file
 ```
+##give up all local changes and remove untracked  directories and files
+```
+git checkout . && git clean -xdf
+```
+
 ##remember password
 ```
 git config --global credential.helper wincred
