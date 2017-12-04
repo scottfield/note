@@ -42,8 +42,11 @@ git push -u origin master
 ```
 git reset --soft HEAD^
 ```
-##undo uncommitted file
+##give up uncommitted changes to file
 ```
+git rm --cached -f -- src/main/gui/src/routes/IndexPage.js
+git checkout HEAD -- src/main/gui/src/routes/IndexPage.js
+  or
 git checkout path/to/file
 ```
 ##give up all local changes and remove untracked  directories and files
