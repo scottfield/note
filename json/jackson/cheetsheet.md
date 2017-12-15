@@ -7,3 +7,8 @@ public class User implements Serializable {
    private String name;
 }
 ```
+- 定义日期格式
+```
+@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
+ private Date endDate;
+```
