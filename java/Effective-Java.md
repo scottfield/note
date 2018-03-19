@@ -22,3 +22,22 @@
       constructors cannot be subclassed
      - A second shortcoming of static factory methods is that
        they are hard for programmers to find. 
+
+- consider a builder when faced with many constructor parameters
+
+  some alternative method:
+  
+   - telescoping constructor
+   
+      drawbacks:
+      - hard to read and write when there are many parameters
+   - java beans pattern
+      
+      drawbacks:
+      - a JavaBean may be in an inconsistent state partway through its construction
+      - cannot make a immutable class
+
+- enforce the singleton property with a private constructor or an enum type
+- enforce noninstantiability with a private constructor
+- prefer dependency injection to hardwiring resources
+- avoid creating unnecessary objects
