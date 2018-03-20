@@ -41,3 +41,11 @@
 - enforce noninstantiability with a private constructor
 - prefer dependency injection to hardwiring resources
 - avoid creating unnecessary objects
+- eliminate obsolete object references
+- avoid finalizers and cleaners
+
+  drawbacks:
+  
+  - there is no guarantee they’ll be executed promptly
+
+- prefer try-with-resources to try-finally
