@@ -76,3 +76,18 @@
    - For any non-null reference value x, x.equals(null) must return false
 
 - always override hashcode when you override equals
+- always override tostring
+- override clone judiciously
+- consider implementing comparable
+
+   note:
+     - there is no way to
+       extend an instantiable class with a new value component while
+       preserving the compareTo contract, unless you are willing to forgo
+       the benefits of object-oriented abstraction
+     - When comparing field values in the implementations of
+       the compareTo methods, avoid the use of the < and > operators.
+       Instead, use the static compare methods in the boxed primitive
+       classes or the comparator construction methods in
+       the Comparator interface.
+- minimize the accessibility of classes and members
