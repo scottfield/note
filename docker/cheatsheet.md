@@ -76,3 +76,8 @@ eval $(docker-machine env -u)     # Disconnect shell from VMs, use native docker
 docker-machine stop $(docker-machine ls -q)               # Stop all running VMs
 docker-machine rm $(docker-machine ls -q) # Delete all VMs and their disk images
 ```
+
+###explore image content
+```
+docker run -it image_name sh
+```
