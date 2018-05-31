@@ -16,3 +16,6 @@ java -jar filename
 ```
 oracle java tool document link
 https://docs.oracle.com/javase/10/tools/java.htm#JSWOR624
+
+oracle document for classpath
+https://docs.oracle.com/javase/6/docs/technotes/tools/windows/classpath.html 
