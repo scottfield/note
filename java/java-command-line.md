@@ -14,3 +14,5 @@ contains a line in the format  Main-Class:classname
 ```
 java -jar filename
 ```
+oracle java tool document link
+https://docs.oracle.com/javase/10/tools/java.htm#JSWOR624
