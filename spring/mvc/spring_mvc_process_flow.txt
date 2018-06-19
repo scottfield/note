@@ -1,0 +1,49 @@
+javax.servlet.Servlet#service
+        v
+javax.servlet.GenericServlet#service
+        v
+javax.servlet.http.HttpServlet#service(javax.servlet.ServletRequest, javax.servlet.ServletResponse)
+        v
+javax.servlet.http.HttpServlet#service(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+        v
+org.springframework.web.servlet.HttpServletBean(set servlet init param as bean property)
+        v
+provide integration with spring application context
+org.springframework.web.servlet.FrameworkServlet#processRequest
+        v
+org.springframework.web.servlet.DispatcherServlet#doService
+        v
+org.springframework.web.servlet.DispatcherServlet#doDispatch
+        v
+org.springframework.web.servlet.DispatcherServlet#checkMultipart wrap multipart file request
+        v
+how can we find handler for a request(org.springframework.web.servlet.HandlerMapping)
+org.springframework.web.servlet.DispatcherServlet#getHandler
+        v
+org.springframework.web.servlet.DispatcherServlet#noHandlerFound if no found any handler for this request
+        v
+how to talk to handler(org.springframework.web.servlet.HandlerAdapter)
+org.springframework.web.servlet.DispatcherServlet#getHandlerAdapter
+        v
+where is the interceptor come from(org.springframework.web.servlet.HandlerInterceptor)
+org.springframework.web.servlet.HandlerExecutionChain#applyPreHandle(org.springframework.web.servlet.HandlerInterceptor#preHandle)
+        v
+org.springframework.web.servlet.HandlerAdapter#handle call controller's method to handle the request
+        v
+org.springframework.web.servlet.DispatcherServlet#applyDefaultViewName use viewNameTranslator to find a default view name when result mv not has view name
+        v
+org.springframework.web.servlet.HandlerExecutionChain#applyPostHandle(org.springframework.web.servlet.HandlerInterceptor#postHandle)
+        v
+org.springframework.web.servlet.DispatcherServlet#processDispatchResult
+        v
+org.springframework.web.servlet.DispatcherServlet#processHandlerException(use handlerExceptionResolvers)
+        v
+org.springframework.web.servlet.DispatcherServlet#render
+        v
+org.springframework.web.servlet.DispatcherServlet#resolveViewName
+        v
+org.springframework.web.servlet.View#render(use the view object to render the page)
+        v
+org.springframework.web.servlet.DispatcherServlet#cleanupMultipart
+        v
+org.springframework.web.servlet.FrameworkServlet#publishRequestHandledEvent
