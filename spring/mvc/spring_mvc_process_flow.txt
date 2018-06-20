@@ -34,6 +34,7 @@ use return value handler to handle return value such as use http message convert
 (related interface or class
 org.springframework.web.method.support.HandlerMethodArgumentResolver
 org.springframework.web.method.support.HandlerMethodReturnValueHandler
+org.springframework.web.method.support.ModelAndViewContainer
 org.springframework.web.bind.WebDataBinder
 org.springframework.web.method.annotation.ModelAttributeMethodProcessor
 org.springframework.web.bind.annotation.ControllerAdvice
