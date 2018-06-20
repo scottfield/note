@@ -29,6 +29,7 @@ where is the interceptor come from(org.springframework.web.servlet.HandlerInterc
 org.springframework.web.servlet.HandlerExecutionChain#applyPreHandle(org.springframework.web.servlet.HandlerInterceptor#preHandle)
         v
 org.springframework.web.servlet.HandlerAdapter#handle call controller's method to handle the request
+argumentResolvers,returnValueHandlers,initBinder,modelAttribute,modelAttributeAdvice,parameterNameDiscoverer
         v
 org.springframework.web.servlet.DispatcherServlet#applyDefaultViewName use viewNameTranslator to find a default view name when result mv not has view name
         v
