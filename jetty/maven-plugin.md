@@ -1,0 +1,33 @@
+####maven sample configuration
+```xml
+<plugin>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-maven-plugin</artifactId>
+    <version>9.4.11.v20180605</version>
+    <configuration>
+        <stopPort>9966</stopPort>
+        <contextXml>src/test/resources/jetty-context.xml</contextXml>
+        <jettyXml>src/test/resources/jetty.xml</jettyXml>
+        <webApp>
+            <contextPath>/global-mrp-api</contextPath>
+        </webApp>
+        <systemPropertiesFile>src/test/resources/jetty.properties</systemPropertiesFile>
+        <httpConnector>
+            <port>8080</port>
+        </httpConnector>
+    </configuration>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-client</artifactId>
+            <version>5.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ingres.jdbc.snxmade</groupId>
+            <artifactId>iijdbc</artifactId>
+            <version>4.3.1</version>
+        </dependency>
+    </dependencies>
+</plugin>
+```
+more reference <http://www.eclipse.org/jetty/documentation/current/jetty-maven-plugin.html#configuring-jetty-container>
