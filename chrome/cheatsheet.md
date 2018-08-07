@@ -3,3 +3,7 @@
 ```
  --args --disable-web-security  --user-data-dir
 ```
+###debug your network
+```
+chrome://net-internals
+```
