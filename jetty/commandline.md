@@ -22,6 +22,10 @@ java -jar $JETTY_HOME/start.jar --add-to-start=http,deploy
 cp $JETTY_HOME/demo-base/webapps/async-rest.war ./webapps/
 java -jar $JETTY_HOME/start.jar
 ```
+###enable modules
+```
+java -jar $JETTY_HOME/start.jar --add-to-start=http,webapp,deploy
+```
 ###change jetty port through commandline
 ```
 java -jar $JETTY_HOME/start.jar jetty.http.port=80
@@ -40,4 +44,8 @@ jetty.ssl.port=443
 ###enable https support
 ```
 java -jar $JETTY_HOME/start.jar --add-to-start=https,http2
+```
+###enable remote debug
+```
+java -Xdebug -agentlib:jdwp=transport=dt_socket,address=5005,server=y,suspend=n -jar $JETTY_HOME/start.jar
 ```
