@@ -38,3 +38,8 @@
 ```
 
 ```
+###Configure new Yong and Old generation memory size
+```
+//the old generation's size is double as yong generation
+-XX:NewRatio=2
+```
