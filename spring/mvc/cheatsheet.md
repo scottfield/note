@@ -7,3 +7,11 @@ public HttpMessageConverter jsonMessageConverter() {
     return new MappingJackson2HttpMessageConverter(objectMapper);
 }
 ```
+###开启详细日志
+```
+enable mvc logger level as TRACE
+<Logger name="org.springframework.web.servlet" level="TRACE"/>
+
+print request and response detail
+org.springframework.web.servlet.FrameworkServlet#enableLoggingRequestDetails=true
+```
