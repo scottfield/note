@@ -1,3 +1,7 @@
+###check database supported store engines
+```
+mysql>  SELECT * FROM INFORMATION_SCHEMA.ENGINES;
+```
 ###check a query's profiling data
 ```
 mysql> SET SESSION profiling = 1;#0表示关闭,1表示开启
