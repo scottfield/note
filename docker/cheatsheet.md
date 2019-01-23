@@ -81,3 +81,7 @@ docker-machine rm $(docker-machine ls -q) # Delete all VMs and their disk images
 ```
 docker run -it image_name sh
 ```
+###copy file between host machine and docker container
+```
+docker cp container_id:/file/path .
+```
