@@ -11,3 +11,7 @@
         return factoryBean;
     }
 ```
+###how springboot load application(yml/properties) config file
+```
+org.springframework.boot.context.config.ConfigFileApplicationListener.Loader#load(org.springframework.boot.env.PropertySourceLoader, java.lang.String, org.springframework.boot.context.config.ConfigFileApplicationListener.Profile, org.springframework.boot.context.config.ConfigFileApplicationListener.DocumentFilter, org.springframework.boot.context.config.ConfigFileApplicationListener.DocumentConsumer)
+```
