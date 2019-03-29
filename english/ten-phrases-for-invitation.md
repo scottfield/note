@@ -1,0 +1,10 @@
+- are you free saturday night
+- are you doing anything saturday night
+- let me check my calendar
+- do you wanna see a movie
+- would you like to join me for dinner
+- I'd love to
+- sounds great
+- I'd love to. but I have another commitment
+- I don't think I can
+- maybe another time.
