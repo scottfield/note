@@ -43,3 +43,29 @@
         </plugins>
     </build>
 ```
+###use resources plugin to copy files
+```
+ <plugin>
+    <artifactId>maven-resources-plugin</artifactId>
+    <version>3.1.0</version>
+    <executions>
+        <execution>
+            <id>copy-resources</id>
+            <!-- here the phase you need -->
+            <phase>validate</phase>
+            <goals>
+                <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+                <outputDirectory>${basedir}/target/classes/features</outputDirectory>
+                <resources>
+                    <resource>
+                        <directory>src/test/resources/features</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
