@@ -2,3 +2,7 @@
 ```
 less -N filename
 ```
+###open file with search in case insensitive
+```
+less -I fileName 
+```
