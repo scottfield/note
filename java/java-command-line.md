@@ -14,6 +14,26 @@ contains a line in the format  Main-Class:classname
 ```
 java -jar filename
 ```
+###specify jvm working directory
+```
+-Duser.dir=your_directory
+
+```
+###get current jvm working directory
+```
+System.getProperty("user.dir")
+
+```
+### get running jvm's environment information
+```
+step 1. get java process's id
+jps -lv
+or 
+ps aux
+
+step 2. use jinfo to get environment information
+jinfo <pid>
+```
 oracle java tool document link
 https://docs.oracle.com/javase/10/tools/java.htm#JSWOR624
 
