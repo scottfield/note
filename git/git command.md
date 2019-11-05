@@ -81,3 +81,11 @@ git fetch --depth=2147483647
 ```
 git pull --all
 ```
+
+-use patch to share code change
+```
+step 1 create a patch file to store code changes
+git diff > mypatch.txt
+step 2 use apply command to import code changes from patch file
+git apply mypatch.txt
+```
