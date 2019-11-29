@@ -29,3 +29,10 @@ or
 or
 ~ $ nproc
 ```
+
+###使用iostat命令获取磁盘IO数据
+```
+iostat -m
+iostat -c
+iostat --help
+```
