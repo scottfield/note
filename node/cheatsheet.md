@@ -25,3 +25,9 @@ then execute 'npm link <modelue_name>', here the module name is the name inside 
 you want to reference.
 
 ```
+####setup maximum memory of node process
+```
+add --max-old-space-size node parameter to specify the maxium memory
+the unit is MB, e.g:
+--max-old-space-size=10 will setup a maxium 10BM memory limit.
+```
