@@ -1,3 +1,8 @@
+
+###show database version information
+```
+SHOW VARIABLES LIKE '%version%'
+```
 ###show table structure
 ```
 mysql> EXPLAIN  tableName;
