@@ -32,3 +32,9 @@ after operation don't forget to enable it:
 SET FOREIGN_KEY_CHECKS=1
 SHOW GLOBAL variables like 'FOREIGN_KEY_CHECKS' ;
 ```
+### check table size
+```
+select table_schema "DB name (table_schema)", 
+sum((data_length+index_length)/1024/1024) AS "DB size in MB" from 
+information_schema.tables group by table_schema
+```
