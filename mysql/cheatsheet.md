@@ -24,3 +24,11 @@ SHOW ENGINES;
 ```
 SHOW TABLE STATUS LIKE 'user'\G
 ```
+### temporarily disable foreign key constrains check
+```
+SET FOREIGN_KEY_CHECKS=0
+SHOW GLOBAL variables like 'FOREIGN_KEY_CHECKS' ;
+after operation don't forget to enable it:
+SET FOREIGN_KEY_CHECKS=1
+SHOW GLOBAL variables like 'FOREIGN_KEY_CHECKS' ;
+```
