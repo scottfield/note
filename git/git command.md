@@ -59,7 +59,7 @@ git checkout . && git clean -xdf
 git config --global credential.helper wincred
 ```
 
-##clone huge repository
+##clone huge repository(shallow clone)
 - First, turn off compression:
 
 ```
@@ -88,4 +88,13 @@ step 1 create a patch file to store code changes
 git diff > mypatch.txt
 step 2 use apply command to import code changes from patch file
 git apply mypatch.txt
+```
+
+### backfill history after shallow clone
+```
+backfill all history:
+git pull --unshallow
+backfill some history:
+git fetch --depth=100
+
 ```
