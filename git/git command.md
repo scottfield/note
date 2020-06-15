@@ -38,6 +38,10 @@ git push -u origin master
 git remote add origin https://github.com/scottfield/book.git
 git push -u origin master
 ```
+##pull unrelated history from remote repo
+```
+git pull origin master --allow-unrelated-histories
+```
 ##undo current commit
 ```
 git reset --soft HEAD^
