@@ -36,3 +36,6 @@ initialization.
 ####opcode
 opcode mnemonic by a letter: i for an int operation, l for long, s for short,
 b for byte, c for char, f for float, d for double, and a for reference.
+
+####how java find classes
+https://docs.oracle.com/javase/8/docs/technotes/tools/findingclasses.html
