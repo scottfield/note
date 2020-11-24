@@ -28,3 +28,7 @@ This type is meant to be used for a single domain and offers no support for subd
 ```
 openssl req -nodes -newkey rsa:2048 -keyout example.key -out example.csr
 ```
+###Use keytool to generate a self signed keystore
+```
+keytool -genkey -keyalg RSA -alias selfsigned -keystore keystore.jks -storepass password -validity 360 -keysize 2048
+```
