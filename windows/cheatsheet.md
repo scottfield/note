@@ -21,3 +21,7 @@ shell:startup
 for all users
 shell:common startup
 ```
+###clear DNS cache
+```
+ipconfig /flushdns
+```
