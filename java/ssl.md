@@ -32,3 +32,8 @@ openssl req -nodes -newkey rsa:2048 -keyout example.key -out example.csr
 ```
 keytool -genkey -keyalg RSA -alias selfsigned -keystore keystore.jks -storepass password -validity 360 -keysize 2048
 ```
+
+###Convert CRT file to PEM file
+```
+sudo openssl x509 -in WalmartRootCA-SHA256.crt -inform der -out walmartrootca.pem -outform PEM
+```
