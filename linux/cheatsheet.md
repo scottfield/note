@@ -201,3 +201,9 @@
     r(读)—>4 w(写)—>2 x(执行)—>1
     chmod 755 app.py
     ```
+- 复制远程服务器文件到本地
+  ```
+  rsync -av --rsh=ssh app@10.37.17.57:/secrets .
+  or
+  scp username@remote_host:/remote_dir/* ./local_dir
+  ```
