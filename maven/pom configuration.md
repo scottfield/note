@@ -2,8 +2,8 @@
 ###configuration jdk version
 ```
 <properties>
-  <maven.compiler.source>1.6</maven.compiler.source>
-  <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
 </properties>
 ```
 ###use assemblly create a fat jar
