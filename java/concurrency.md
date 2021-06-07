@@ -45,3 +45,126 @@
 ###如何避免死锁？
 - 通过使用相同顺序来获取锁从而避免死锁的发生
 - 使用显示锁的轮询和定时功能来避免死锁的发生
+
+
+###如何实现有阻塞需求的业务
+可以配合使用轮询和休眠来简单实现
+可以使用条件队列来实现高效的阻塞
+###天天如何正确的使用条件队列
+获取锁
+在循环中检查条件，不满足则调用wait等待条件
+对锁保护的状态进行操作
+调用通知
+在finally块中释放锁
+###notify方法使用的前提条件
+只有在条件队列上等待的所有线程都在等待相同的条件，以及每次通知只能唤醒一个线程时才能使用notify方法
+###对象内置条件队列和Condition对象的比较
+####内置队列
+优点：每个对象自带条件队列，
+缺点：一个锁对象只有一个条件等待队列，因此大部分情况下需要调用notifyAll来进行通知，可能会造成性能问题，虽然可以使用条件通知来进行缓解，如果使用notify通知容易导致信号劫持问题，不支持公平等待队列
+###condition条件队列
+优点：一个锁对象可以创建多个条件等待队列用于不同的等待条件，因此代码逻辑会更容易分析，而且因为对不同的条件使用不同的队列可以使用signal唤醒单独的某个线程避免不必要的线程上下文切换的开销。可以选择公平队列或非公平队列。
+缺点：
+###两者如何进行选择
+一般取决于锁的选择，因为选择锁时就会根是否需要中断，超时，无条件返回等条件来判断选择何种锁，一旦锁定下来了，条件队列也就相应的定下来了。
+###AQS框架的实现原理
+支持独占的获取操作需要实现tryAquire,tryRelease和isHeldExclusively等
+支持共享的获取操作需要实现tryAquireShared,tryReleaseShared等
+而AQS的aquire,aquireShared,release和releaseShared就会调用相应的有try前缀的方法
+###使用AQS框架实现的常见同步器类
+- ReentrantLock
+- ReadWriteReentrantLock
+- Semaphore
+- CountdownLatch
+- SynchronousQueue
+###原子变量的实现原理
+利用硬件的CAS指令来实现变量的原子更新操作以及实现于volatile相同的内存可见性
+###原子变量与锁之间的区别
+原子变量相当于是一种乐观锁的实现，因此在使用时需要在循环中来查看更新是否生效，如果失败需要重新尝试，而锁是一种悲观锁的实现，
+在使用时需要先锁定目标然后进行独占式的访问，而且原子变量不会引起进程调度，因此不会有进程上下文切换的开销，因此在并发情况不是很激烈的情况下，原子变量的性能要优于锁。
+###volatile与原子变量的比较
+volatile和原子变量与锁相比是更轻量级的同步机制，不会造成上下文的切换，性能更好
+####volatile
+优点：使用简单，支持所有的数据类型，使用store-load Barrier内存屏障来确保可见性
+缺点：不支持复合操作,不支持数组元素的原子更新操作
+####原子变量
+优点：支持复合操作，支持数组元素的原子更新操作，支持store-store Barrier内存屏障类型，可以提供比volatile更高的性能
+缺点：需要使用单独的原子变量类，只支持int,long,reference以及对应的数组数据类型
+###原子变量支持的类型有哪些
+int，long，reference以及这三种类型对应的数组类型，以及long和double的Adder和Accumulator类
+###如何解决ABA问题
+可以使用AtomicStampedReference给数据加上一个版本号来解决
+###JAVA内存模型的happens before关系有哪些
+- Program order rule.
+  Each action in a thread happens before every action in that thread that comes later in the program order.
+- Monitor lock rule.
+  An unlock on a monitor lock happens before every subsequent lock on that same monitor lock.
+- Volatile variable rule.
+  A write to a volatile field happens before every subsequent read of that same field.
+- Thread start rule.
+  A call to Thread.start on a thread happens before every action in the started thread.
+- Thread termination rule.
+  Any action in a thread happens before any other thread detects that thread has
+  terminated,either by successfully return from Thread.join or by Thread.isAlive returning false.
+- Interruption rule. 
+  A thread calling interrupt on another thread happens before the interrupted thread detects the
+  interrupt(either by having InterruptedException thrown,or invoking isInterrupted or interrupted).
+- Finalize rrule. 
+  The end of a constructor for an object happens before the start of the finalizer for that object.
+- Transitivity. 
+  If A happens before B,and B happens before C,then A happens before C.
+###如何安全的发布对象
+- 在静态初始化函数中初始化一个对象应用
+- 将对象的引用保存到volatile类型的域中，或者AtomicReference对象中
+- 将对象的引用保存到某个正确构造对象的final类型的域中(初始化安全性只能保证通过final域可达的值从构造完成时开始的可见性)
+- 将对象的引用保存到一个由锁保护的域中
+- 不可变对象天然就是线程安全的
+
+###锁的使用注意事项
+- 一定不要在复杂计算或可能无法快速完成的操作（列如IO操作，网络调用，可阻塞操作等）时持有锁。
+- 尽量缩小锁的使用范围
+###同步（加锁）的作用
+- 确保操作的原子性
+- 确保内存的可见性
+
+###如何设计线程安全的类
+- 找出构成对象状态的所有变量
+- 找出约束状态变量的不变性条件
+- 建立对象状态的并发访问管理策略
+
+是有构造函数捕获模式(private constructor capture idiom)
+
+###同步容器
+Vector
+Hashtable
+Collections.synchronizedXxxx
+###并发容器
+ConcurrentHashMap
+ConcurrentSkipListMap
+ConcurrentSkipListSet
+CopyOnWriteArrayList
+CopyOnWriteArraySet
+
+###工作队列(producer-consumer)
+- ArrayBlockingQueue
+- LinkedBlockingQueue
+- PriorityBlockingQueue
+- LinkedTransferQueue
+- SynchronousQueue
+- DelayQueue
+
+###双端队列(work-stealing)
+- LinkedBlockingDeque
+
+
+###中断处理
+- 传递InterruptedException
+  不捕获改InterruptedException,或先捕获InterruptedException，进行简单的清理工作然后再抛出InterruptedException
+- 恢复中断
+  比如在Runnable的实现中就无法抛出异常
+  先捕获InterruptedException 然后调用Thread.currentThread().interrupt()方法来恢复中断状态
+
+###同步工具类(Semaphore,Barrier,Latch)
+- 闭锁(Latch)用于确保某些活动直到其他活动都完成后才能继续执行.具体实现CountDownLatch，FutureTask
+- 信号量(Semaphore)用于控制同时访问某个特定资源的操作数量.具体实现Semaphore
+- 栅栏(Barrier)用于确保一组线程都到达栅栏位置才能继续运行。具体实现CyclicBarrier，Exchanger
