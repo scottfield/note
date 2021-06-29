@@ -213,3 +213,58 @@ CopyOnWriteArraySet
 ###内存同步
 内存同步会增加内存总线上的通信量，总线的带宽是有限的，所有的处理器都会共享这条总线。
 因此非阻塞算法在竞争比较激烈的竞争下会导致同步通信量的增加
+
+
+Executors
+Executor 
+ExecutorService
+ScheduledExecutorService
+
+ThreadPoolExecutor
+ScheduledThreadPoolExecutor
+
+Runnable
+Callable
+
+Future
+RunnableFuture
+FutureTask
+
+CompletionService
+ExecutorCompletionService
+
+UncaughtExceptionHandler
+Runtime.addShutdownHook
+
+
+###如何处理不可中断阻塞
+- java.io包中的同步Socket I/O
+  关闭socket可以使阻塞的read/write方法抛出SocketException，从而被终止
+- java.io包中的同步I/O
+  中断InterruptibleChannel上等待的线程时，会抛出ClosedByInterruptException
+- Selector异步IO
+  当一个线程在调用Selector.select方法时阻塞，那么调用selector的close 或wakeup方法时会抛出ClosedSelectorException
+- 获取锁
+  可以使用Lock API的lockInterruptibly来防止无法取消阻塞
+
+###线程池的使用
+###=线程池大小设置
+- coreSize，核心线程数，默认是在提交任务时创建线程，可以通过prestartAllCoreThreads,prestartCoreThread来提前启动
+- maximumSize 最大线程数，只有在工作队列满了并且当前线程数大于核心线程数小于最大线程数时，才会创建线程，并且会根据keepAlive指定的时间来回收空闲线程
+- keepAliveTime 指定线程空闲多久后会被回收，默认情况下只有非核心线程才会被回收，但是可以设置allowCoreThreadTimeOut来回收核心线程
+###=工作队列的选取
+有界队列(ArrayBlockingQueue) 可能会导致任务被拒绝，CPU等资源没被充分利用
+无界队列(LinkedBlockingQueue) 可能会导致大量的任务堆积
+同步队列(SynchronousQueue) 可能会导致大量线程的创建
+###=线程创建工厂
+- 线程命名，指定线程组，指定线程优先级，指定后台线程等等
+###=饱和策略的选取
+- abortPolicy 抛出RejectedExecutionException直接抛弃当前任务
+- callerRunsPolicy 在调用线程中允许当前任务
+- discardPolicy 丢弃队列中最后面的一个任务，然后重试当前任务
+- discardOldestPolicy 丢弃队列中最前面的一个任务，然后重试当前任务
+
+###=扩展的回调钩子,可以用于统计信息的收集，日志打印，ThreadLocal初始化等任务
+- beforeExecute
+- afterExecute
+- terminated
