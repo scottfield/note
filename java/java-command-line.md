@@ -51,6 +51,12 @@ cat /proc/<PID>/environ
 ```
  top -H -p process_id         
 ```
+
+###find TCP connections opened by a java process
+```
+sudo lsof -nPiTCP -p 4693 -a
+```
+
 oracle java tool document link
 https://docs.oracle.com/javase/10/tools/java.htm#JSWOR624
 
