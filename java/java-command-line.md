@@ -34,13 +34,22 @@ ps aux
 step 2. use jinfo to get environment information
 jinfo <pid>
 ```
-get linux process environment information:
+###get linux process environment information:
 ```
 step 1. get PID
 ps aux|grep 'your_process_name'
 
 step 2. get process environment information
 cat /proc/<PID>/environ
+```
+###get java threads 
+```
+ ps -efL|grep java
+```
+
+###monitor java threads cpu consuming
+```
+ top -H -p process_id         
 ```
 oracle java tool document link
 https://docs.oracle.com/javase/10/tools/java.htm#JSWOR624
