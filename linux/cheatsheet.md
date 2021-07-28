@@ -207,3 +207,9 @@
   or
   scp username@remote_host:/remote_dir/* ./local_dir
   ```
+  
+- tcpdump抓包并保存为pcap文件
+```
+#抓取网卡eth0上的2000条tcp记录并保存为文件tcpanalyze.pcap
+tcpdump -i eth0 -c 2000 -w tcpanalyze.pcap tcp
+```
