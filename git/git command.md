@@ -133,8 +133,8 @@ git push -f origin master
 - commandline method:
 ```
 git rebase -i <commit_hash>
-//edit as playbook mark first commit as r and mark the remaining as s,looks like the following,
-r 56bcce7 Closes #2774
+//edit as playbook mark first commit as pick and mark the remaining as s,looks like the following,
+pick 56bcce7 Closes #2774
 s e43ceba Lint.py: Replace deprecated link
 
 git rebase --continue
