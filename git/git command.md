@@ -129,3 +129,17 @@ Finally, force update your repository
 
 git push -f origin master
 ```
+###how to squeeze commits
+- commandline method:
+```
+git rebase -i <commit_hash>
+//edit as playbook mark first commit as r and mark the remaining as s,looks like the following,
+r 56bcce7 Closes #2774
+s e43ceba Lint.py: Replace deprecated link
+
+git rebase --continue
+
+//edit the commit message, and save the changes
+
+```
+- use intellij squeeze commits git UI to quickly merge all commits.
