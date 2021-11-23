@@ -24,3 +24,13 @@ alter table test drop column id;
 EXEC overwatchdb.sys.sp_rename 'overwatchdb.dbo.test.another_id' , 'id', 'COLUMN';
 select * from test;
 ```
+
+###how to logging sqlserver jdbc driver
+sqlserver driver use java.util.logging, so we need to configure a logging.properties to fine control
+logging level.
+
+- copy the logging.properties file to your application's resource folder
+- start java application with below VM parameter to where the logging.properties.
+  ```
+  -Djava.util.logging.config.file=the_absolute_path_to_logging.properties
+  ```
