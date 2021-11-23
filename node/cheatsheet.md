@@ -31,3 +31,12 @@ add --max-old-space-size node parameter to specify the maxium memory
 the unit is MB, e.g:
 --max-old-space-size=10 will setup a maxium 10BM memory limit.
 ```
+
+###how to decrypt tls(https) traffic in nodejs
+- let nodejs save ssl key to a keylog.txt file
+```
+start node application with following paramter
+node --tls-cipher-list="AES128-SHA"  --tls-keylog=C:\Users\vn50bj4\keylog.txt test.js
+```
+- use the keylog in wireshark to decrypt the traffic
+![setup in wireshark](wirekshark_pre_master_secret_log.png)

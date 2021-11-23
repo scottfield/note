@@ -37,3 +37,10 @@ keytool -genkey -keyalg RSA -alias selfsigned -keystore keystore.jks -storepass 
 ```
 sudo openssl x509 -in WalmartRootCA-SHA256.crt -inform der -out walmartrootca.pem -outform PEM
 ```
+
+###how to decrypt java tls(https) traffic with wireshark
+- run java application with below VM options
+```
+-javaagent:C:\Users\vn50bj4\extract-tls-secrets-4.1.0.jar=C:\Users\vn50bj4\secrets.log
+```
+- in wireshark config pre-master keylog file with the above generated file(C:\Users\vn50bj4\secrets.log)
