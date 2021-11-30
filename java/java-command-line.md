@@ -49,7 +49,11 @@ cat /proc/<PID>/environ
 
 ###monitor java threads cpu consuming
 ```
- top -H -p process_id         
+//print out threads with thread name
+ps -eT
+//get cpu utilization of all threads created by the same process
+ top -H -p process_id    
+     
 ```
 
 ###find TCP connections opened by a java process
