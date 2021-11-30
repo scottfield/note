@@ -1,15 +1,39 @@
+###how does @EnableTransactionManagement works
+the @EnableTransactionManagement will trigger to load
+|
+V
+TransactionManagementConfigurationSelector, the selectImports of this selector will determine
+what kind of proxy configuration should be loaded base on AdviceMode method argument
+|
+V
+load ProxyTransactionManagementConfiguration and AutoProxyRegistrar if advice mode is PROXY
+- ProxyTransactionManagementConfiguration:configure transaction interceptor and BeanFactoryTransactionAttributeSourceAdvisor bean
+- AutoProxyRegistrar: handle auto proxy creator registering base on annotation on configuration class( the qualified annotation should
+have mode attribute of type AdviceMode and proxyTargetClass of type Boolean.
+e.g.@EnableTransactionManagement,@EnableAsync,@EnableAspectJAutoProxy,@EnableCaching etc.).
+|
+V
+when a bean created, the auto proxy creator will be applied to create a proxy if any methods of this bean,
+or the bean class itself is annotated with @Transactional annotation.
+|
+V
+when a proxied method called, the transaction interceptor will try to load the transaction attribute of this method 
+by using the transaction attribute source,if the attribute is exist, will open a transaction to handle this method invocation. 
+
+
+
 ###spring事务相关类说明
-ProxyTransactionManagementConfiguration
+ProxyTransactionManagementConfiguration(this is the configuration class used for setup transaction related infrastructure beans)
 
 
 Advisor
   ^--PointcutAdvisor
     ^--AbstractPointcutAdvisor
       ^--AbstractBeanFactoryPointcutAdvisor
-        ^--BeanFactoryTransactionAttributeSourceAdvisor
+        ^--BeanFactoryTransactionAttributeSourceAdvisor(used for holding the TransactionInterceptor and AnnotationTransactionAttributeSource pointcut)
 
 TransactionAspectSupport
-  ^--TransactionInterceptor
+  ^--TransactionInterceptor(this interceptor will hold the transaction manager and responsible for opening a transaction if necessary)
   
 - transaction注解解析器，用于支持解析各种不同的事务定义注解将其解析为TransactionAttribute对象
 TransactionAnnotationParser
@@ -35,3 +59,9 @@ PlatformTransactionManager
 TransactionStatus
 TransactionSynchronizationManager
 TransactionSynchronization
+
+###enable logging to see if transactions are open and closed correctly
+```
+//this is a logback configuration
+<logger level="trace" name="org.springframework.transaction.interceptor"/>
+``` 

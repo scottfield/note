@@ -1,10 +1,43 @@
-spring use BeanPostProcessor to create proxy object,
-following class will handle processes all AspectJ 
-annotation aspects in the current application context,
-as well as Spring Advisors.
+###some important terminologies in AOP
+  - Advice:define what's the enhancement of an aspect, and when to apply to a target object.
+  - Pointcut:when to apply the enhancement to the target object
+  - Advisor: contains the advice and pointcut
+  - joinpoint: any invocation point in the program,namely the methods of all objects(in Spring AOP)
+
+we can use AOP declaratively or programmatically.
+
+###declaratively way
+spring use BeanPostProcessor to declaratively create proxy objects,
+we can register any one of auto-proxy creator beans of below to enable
+automatically create proxy objects for candidate objects.
+or, we can either one of annotation @EnableAspectJAutoProxy or @EnableTransactionManagement 
+on a @Configuration class to automatically register the auto-proxy creator accordingly.
+
+  org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator
+    |-- org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator(simple creator used for creating proxies by specified bean names)
+    |-- org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator
+        |-- org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator
+        |-- org.springframework.aop.aspectj.autoproxy.AspectJAwareAdvisorAutoProxyCreator
+            |-- org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator(support declare AOP by aspectJ annotations)
+        |-- org.springframework.aop.framework.autoproxy.InfrastructureAdvisorAutoProxyCreator(default creator for transaction management)
+
+###programmatically way
+we can use ProxyFactory class to manually setup and create proxy objects
 ```
-org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator
+org.springframework.aop.framework.ProxyFactory#getProxy(java.lang.Class<T> proxyInterface, org.aopalliance.intercept.Interceptor interceptor)
 ```
+###how Spring creates a proxy object
+no matter you which style you choose to use spring AOP, under the hood, spring
+always use the AopProxyFactory(DefaultAopProxyFactory) to create a proxy object.
+inside the AopProxyFactory, it will read the aop configuration to determine what kind
+of proxy object(JdkDynamicAopProxy or CglibAopProxy) should be created.  
+                
+AopProxyFactory--call createAopProxy to generate--> AopProxy   --call getProxy to generate--> a real Poxy Object.
+for JdkDynamicAopProxy, it will build a ReflectiveMethodInvocation which contains all interceptors.
+when this ReflectiveMethodInvocation is invoked, the interceptors will be called one by one until the called on the method of target object.
+
+
+###different type of advice supported by spring AOP
 ```
 
  |-- org.aopalliance.aop.Advice 
@@ -21,5 +54,5 @@ org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreato
             |-- org.springframework.aop.aspectj.AspectJAfterReturningAdvice
 ```
 
-
-  org.aopalliance.intercept.Interceptor
+###advanced feature
+- TargetSource: you can use this interface to dynamically get the target object,e.g. get from database query, or hot swap the current target object.
