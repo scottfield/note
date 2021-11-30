@@ -44,6 +44,7 @@ TransactionAnnotationParser
 - 指定如何从方法上获取事务信息
 TransactionAttributeSource
   ^--AnnotationTransactionAttributeSource(将@Transaction注解定义的事务定义转换为transactionAttribute)
+  ^--org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource(use this one to define pattern based transaction attribute for different type of methods)
  
 - 事务信息的抽象数据定义
 TransactionDefinition(定义传播行为、隔离级别、只读事务、超时设置以及事务名称)
