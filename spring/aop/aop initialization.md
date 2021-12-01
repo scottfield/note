@@ -4,11 +4,12 @@
   - Advisor: contains the advice and pointcut
   - joinpoint: any invocation point in the program,namely the methods of all objects(in Spring AOP)
 
-we can use AOP declaratively or programmatically.
+we can use AOP by either declarative or programmatically way.
 
-###declaratively way
-spring use BeanPostProcessor to declaratively create proxy objects,
-we can register any one of auto-proxy creator beans of below to enable
+###declarative way
+manually configure a bean of type org.springframework.aop.framework.ProxyFactoryBean,
+or use BeanPostProcessor to declarative create proxy objects,
+we can register any one of the following auto-proxy creator beans to enable
 automatically create proxy objects for candidate objects.
 or, we can either one of annotation @EnableAspectJAutoProxy or @EnableTransactionManagement 
 on a @Configuration class to automatically register the auto-proxy creator accordingly.
