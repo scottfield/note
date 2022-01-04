@@ -40,3 +40,15 @@ node --tls-cipher-list="AES128-SHA"  --tls-keylog=C:\Users\vn50bj4\keylog.txt te
 ```
 - use the keylog in wireshark to decrypt the traffic
 ![setup in wireshark](wirekshark_pre_master_secret_log.png)
+
+###how to get ssl certificate from chrome
+- ![step1](export_ssl_cert_step1.png)
+- ![step2](export_ssl_cert_step2.png)
+
+###how to configure self signed ssl certificate
+``
+const httpsAgent = new https.Agent({
+    ca: fs.readFileSync("./selfsigned.cer"),
+})
+const axios = require("axios");
+``
