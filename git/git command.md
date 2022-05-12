@@ -143,3 +143,9 @@ git rebase --continue
 
 ```
 - use intellij squeeze commits git UI to quickly merge all commits.
+
+###how to check files change history
+```
+ git log -- filepath
+
+```
