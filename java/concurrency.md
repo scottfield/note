@@ -222,9 +222,13 @@ ScheduledExecutorService
 
 ThreadPoolExecutor
 ScheduledThreadPoolExecutor
+###difference between Runnable and Callable
+Runnable: cannot return value, cannot throw exception
+Callable: can return value, can throw exception
 
-Runnable
-Callable
+###why callable can return value and throw exception
+in essence, A Callable object is converted to FutureTask object which implement the future and runnable interface,
+it will responsible for return the value and exception
 
 Future
 RunnableFuture
