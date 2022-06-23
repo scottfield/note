@@ -2,7 +2,7 @@
   - Advice:define what's the enhancement of an aspect, and when to apply to a target object.
   - Pointcut:when to apply the enhancement to the target object
   - Advisor: contains the advice and pointcut
-  - joinpoint: any invocation point in the program,namely the methods of all objects(in Spring AOP)
+  - JoinPoint: any invocation point in the program,namely the methods of all objects(in Spring AOP)
 
 we can use AOP by either declarative or programmatically way.
 
@@ -11,7 +11,7 @@ manually configure a bean of type org.springframework.aop.framework.ProxyFactory
 or use BeanPostProcessor to declarative create proxy objects,
 we can register any one of the following auto-proxy creator beans to enable
 automatically create proxy objects for candidate objects.
-or, we can either one of annotation @EnableAspectJAutoProxy or @EnableTransactionManagement 
+we can use either one of annotation @EnableAspectJAutoProxy or @EnableTransactionManagement 
 on a @Configuration class to automatically register the auto-proxy creator accordingly.
 
   org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator
@@ -28,14 +28,14 @@ we can use ProxyFactory class to manually setup and create proxy objects
 org.springframework.aop.framework.ProxyFactory#getProxy(java.lang.Class<T> proxyInterface, org.aopalliance.intercept.Interceptor interceptor)
 ```
 ###how Spring creates a proxy object
-no matter you which style you choose to use spring AOP, under the hood, spring
+no matter which style you choose to use spring AOP, under the hood, spring
 always use the AopProxyFactory(DefaultAopProxyFactory) to create a proxy object.
 inside the AopProxyFactory, it will read the aop configuration to determine what kind
 of proxy object(JdkDynamicAopProxy or CglibAopProxy) should be created.  
                 
 AopProxyFactory--call createAopProxy to generate--> AopProxy   --call getProxy to generate--> a real Poxy Object.
 for JdkDynamicAopProxy, it will build a ReflectiveMethodInvocation which contains all interceptors.
-when this ReflectiveMethodInvocation is invoked, the interceptors will be called one by one until the called on the method of target object.
+when this ReflectiveMethodInvocation is invoked, the interceptors will be called one by one until the invocation on the method of target object.
 
 
 ###different type of advice supported by spring AOP
