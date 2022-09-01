@@ -84,3 +84,10 @@ A node is a worker machine in Kubernetes.
 A worker machine may be a VM or physical machine, depending on the cluster.
 It has the Services necessary to run Pods and is managed by the master components.
 The Services on a node include Docker, kubelet and kube-proxy.
+
+###pod initialization
+![innodb structure](pod-init-to-ready.png)
+
+###why we use init container
+Separation of concerns
+Security

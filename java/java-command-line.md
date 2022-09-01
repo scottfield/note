@@ -61,6 +61,11 @@ ps -eT
 sudo lsof -nPiTCP -p 4693 -a
 ```
 
+###get process's start up time
+```
+ps -p 23012 -o etime
+```
+
 oracle java tool document link
 https://docs.oracle.com/javase/10/tools/java.htm#JSWOR624
 
