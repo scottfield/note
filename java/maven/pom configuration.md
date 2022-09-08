@@ -69,3 +69,7 @@
     </executions>
 </plugin>
 ```
+###package and ignore tests
+```
+mvn package -Dmaven.test.skip=true
+```
