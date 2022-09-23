@@ -34,3 +34,5 @@ logging level.
   ```
   -Djava.util.logging.config.file=the_absolute_path_to_logging.properties
   ```
+adjust related logger's level to control the output
+logger categories:https://learn.microsoft.com/en-us/sql/connect/jdbc/tracing-driver-operation?view=sql-server-ver16
