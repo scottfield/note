@@ -15,3 +15,8 @@ openssl ecparam -name prime256v1 -genkey -noout -out ecdsa_private_key.pem
 # Derive the public key from the private key
 openssl ec -in ecdsa_private_key.pem -pubout -out ecdsa_public_key.pem
 ```
+
+###connect to a host to verify ssl handshake and certificate
+```shell script
+openssl s_client -connect cpc-ca-xo-prod-cosmos-canadaeast.documents.azure.com:443
+```
