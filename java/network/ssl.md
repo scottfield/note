@@ -12,10 +12,53 @@
     wildcard certificates are used for a wide range of subdomains. For example, a wildcard certificate issued to *.phoenixnap.com could be used for a wide range of subdomains
     under the main www.phoenixnap.com domain, as seen in the image below.
 ###Certificate validation type
-Domain Validation (DV)
-Organization Validation (OV)
-Extended Validation (EV)
+- Domain Validation (DV)
+- Organization Validation (OV)
+- Extended Validation (EV)
 
+###what Cipher suite contains
+- what key exchange algorithm should be used during pre-master key exchange
+- what authentication algorithm should be used during the handshake.
+- what session encryption algorithm should be used to encrypt the message
+- what message authentication algorithm should be used to authenticate message
+
+###Cipher suite structure
+[example cipher suite](https://ciphersuite.info/cs/TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256/)
+```
+ struct {
+          ProtocolVersion server_version;
+          Random random;
+          SessionID session_id;
+          CipherSuite cipher_suite;
+          CompressionMethod compression_method;
+          select (extensions_present) {
+              case false:
+                  struct {};
+              case true:
+                  Extension extensions<0..2^16-1>;
+          };
+      } ServerHello;
+```
+
+###how SSL/TLS handshake works
+![SSL/TLS handshake process explained](SSLTLS_handshake.png)
+
+###how certificate chain verification works
+[reference doc](https://docs.oracle.com/cd/E19424-01/820-4811/gdzea/index.html)
+Certificate chain verification is the process of making sure a given certificate chain is well-formed, valid, properly signed, and trustworthy.
+Directory Server software uses the following steps to form and verify a certificate chain, starting with the certificate being presented for authentication:
+
+1.The certificate validity period is checked against the current time provided by the verifier’s system clock.
+
+2.The issuer’s certificate is located. The source can be either the verifier’s local certificate database (on that client or server) 
+  or the certificate chain provided by the subject (for example, over an SSL connection).
+
+3.The certificate signature is verified using the public key in the issuer certificate.
+
+4.If the issuer’s certificate is trusted by the verifier in the verifier’s certificate database, verification stops successfully here.
+  Otherwise, the issuer’s certificate is checked to make sure it contains the appropriate subordinate CA indication in the Directory Server
+  certificate type extension,and chain verification returns to step 1 to start again, but with this new certificate.
+ 
 ###how to debug java application ssl
 ```
 -Djavax.net.debug=help
@@ -57,8 +100,8 @@ To view the hexadecimal dumps of each handshake message, you can type the follow
 To view the hexadecimal dumps of each handshake message, and to print trust manager tracing, you can type the following, where the commas are optional:
     java -Djavax.net.debug=SSL,handshake,data,trustmanager MyApp
 ```
-https://docs.oracle.com/javase/1.5.0/docs/guide/security/jsse/JSSERefGuide.html#Debug
-https://docs.oracle.com/javase/1.5.0/docs/guide/security/jsse/ReadDebug.html
+[JSSERefGuide](https://docs.oracle.com/javase/1.5.0/docs/guide/security/jsse/JSSERefGuide.html#Debug)
+[ReadDebug](https://docs.oracle.com/javase/1.5.0/docs/guide/security/jsse/ReadDebug.html)
 
 ###jdk's default ssl certs file location
 ```
