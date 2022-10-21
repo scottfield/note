@@ -109,7 +109,13 @@ C:\Program Files\Java\jre1.8.0_91\lib\security\cacerts
 ```
 ###specify ssl certs file when start up jvm
 ```
--Djavax.net.ssl.trustStore=your_certs_location
+-Djavax.net.ssl.trustStore=your trust store absolute location
+-Djavax.net.ssl.trustStorePassword=your trust store password
+```
+###specify key store
+```
+javax.net.ssl.keyStore=your key store absolute location
+javax.net.ssl.keyStorePassword=your key store password
 ```
 ####how to edit keystore file
 ```
