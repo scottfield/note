@@ -36,3 +36,19 @@ logging level.
   ```
 adjust related logger's level to control the output
 logger categories:https://learn.microsoft.com/en-us/sql/connect/jdbc/tracing-driver-operation?view=sql-server-ver16
+
+###Index Design
+
+####Clustered index(B+ Tree)
+####Non-clustered index(B+ Tree)
+    - The data rows of the underlying table are not sorted and stored in order based on their nonclustered keys.
+    - The leaf level of a nonclustered index is made up of index pages instead of data pages. The index pages on the leaf level of a nonclustered index contain key columns and included columns.
+    - At least one key column must be defined. The maximum number of nonkey columns is 1023 columns. This is the maximum number of table columns minus 1.
+    - Index key columns, excluding nonkeys, must follow the existing index size restrictions of 16 key columns maximum, and a total index key size of 900 bytes
+    - The total size of all nonkey columns is limited only by the size of the columns specified in the INCLUDE clause; for example, varchar(max) columns are limited to 2 GB.
+    
+####Unique index(B+ Tree)
+####Filtered index(B+ Tree)
+####Columnstore indexes
+####Hash index
+####Memory-Optimized non-clustered index(Bw-tree)
