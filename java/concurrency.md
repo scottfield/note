@@ -172,7 +172,13 @@ CopyOnWriteArraySet
 
 ###工作队列(producer-consumer)
 - ArrayBlockingQueue
+    -  can be created with a configurable (on/off) scheduling fairness policy. This is great if you need fairness or want to avoid producer/consumer starvation, but it will cost you in throughput.
+    -  pre-allocates its backing array, so it doesn't allocate nodes during its usage, but it immediately takes what can be a considerable chunk of memory, which can be a problem if your memory is fragmented.
+    -  should have less variability in performance, because it has less moving parts overall, it uses a simpler single-lock algorithm, it does not create nodes during usage, and its cache behavior should be fairly consistent.
 - LinkedBlockingQueue
+    - should have better throughput, because it uses separate locks for the head and the tail.
+    - does not pre-allocate nodes, which means that its memory footprint will roughly match its size, but it also means that it will incur some work for allocation and freeing of nodes.
+    - will probably have worse cache behavior, which may affect its own performance, but also the performance of other components due to false sharing.
 - PriorityBlockingQueue
 - LinkedTransferQueue
 - SynchronousQueue
