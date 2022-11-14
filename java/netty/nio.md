@@ -8,6 +8,10 @@
 1. hardware interrupts
 2. signals(inter-process communication)
 3. event loop(current solution)
+    - select/poll/epoll/io_uring(Linux)
+    - kequeue(Unix)
+    - IOCP(windows)
+    
 
 
 ##how does IO works in OS level
