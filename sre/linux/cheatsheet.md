@@ -10,6 +10,10 @@
     ```
     uname -a
     ```
+- 查看内核版本
+    ```
+    cat /proc/version
+   ```   
 -  创建一个文件
     ```
     touch test.txt
