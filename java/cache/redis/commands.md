@@ -94,3 +94,8 @@ the maximum number of elements a List could hold is 232-1(4 billion)
 - PFADD adds one or many strings to a HyperLogLog.
 - PFCOUNT accepts one or many keys as arguments. When a single argument is specified, it returns the approximate cardinality. When multiple keys are specified, it returns the approximate cardinality of the union of all unique elements
 - PFMERGE requires a destination key and one or many HyperLogLog keys as arguments
+
+##check data type's underline data structure
+```
+object encoding key_name
+```
