@@ -14,6 +14,20 @@
     ```
     cat /proc/version
    ```   
+  查看cpu核心信息
+  ```
+  lscpu
+  或者
+  cat /proc/cpuinfo
+  ```
+  查看内存信息
+  ```
+  cat /proc/meminfo
+  ```
+  查看磁盘容量
+  ```
+  lsblk
+  ```
 -  创建一个文件
     ```
     touch test.txt
