@@ -112,3 +112,24 @@ innodb不会发生锁升级，一个锁与10000个锁对于innodb的开销都是
 - log_out控制慢查询日志输出位置，默认为file，当设置为table时会把慢查询日志输出到mysql.slow_log表中
 ###查询日志
 - 可以被保存到表general_log中
+
+###死锁
+####产生原因:多个事务同时以不同的顺序去获取多个锁
+####如何定位死锁
+- SHOW ENGINE INNODB STATUS
+- SET GLOBAL innodb_print_all_deadlocks = 1;
+####解决办法
+- 尽量缩短事务长度,因为长事务会延迟锁的释放增加死锁的风险
+- 以相同的顺序来获取多个锁
+- 使用乐观锁
+- 对于由于锁获取失败的事务进行重试，增加代码的可靠性
+- 建立合适的字段索引，尽量减少行扫描，因为mysql会锁定所有扫描过的行(因为事务隔离级别就是通过锁来实现的)
+###Lock type
+- table locks
+- record locks
+- share and exclusive locks
+- intention locks
+- gap locks
+- next-key locks
+- insert-intention locks
+- auto-inc locks
