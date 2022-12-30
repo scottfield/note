@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%t] %d{yyyy-MM-dd HH:mm:ss} %5p( %l %x ) - %m%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.google.code.yanf4j" level="OFF"/>
+        <Logger name="net.rubyeye.xmemcached" level="OFF"/>
+        <Logger name="remoting" level="OFF"/>
+        <Root level="INFO">
+            <AppenderRef ref="console"></AppenderRef>
+        </Root>
+    </Loggers>
+</Configuration>
