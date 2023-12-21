@@ -30,3 +30,14 @@ it's a leaf node:currentNodeIndex >n/2
 it's not a leaf node:currentNodeIndex<=n/2
 
 n is the total elements of the heap
+### Static array
+### Dynamic array
+### Linked list
+### Set
+### Hashing
+#### Hash function type
+- division hash(simply modular)
+- universal hash(choose a dynamic factor to evenly calculate hash slot)
+#### Hash collision handling
+- open addressing(the hashtable itself store the data,e.g. linear probing,quadratic probing, second hash etc.)
+- separate chain(e.g. indirectly use array, linked list,dynamic array etc. to store data in the hash table)

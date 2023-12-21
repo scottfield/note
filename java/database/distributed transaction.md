@@ -1,3 +1,6 @@
+### CAP theory
+### ACID theory
+
 open source solution:
 - SEATA: 
     https://seata.io/zh-cn/docs/overview/what-is-seata.html
