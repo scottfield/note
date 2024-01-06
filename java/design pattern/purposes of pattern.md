@@ -1,6 +1,6 @@
-#What is Abstract?
-#What is Encapsulate?
-#How Should We Use It?
+# What is Abstract?
+# What is Encapsulate?
+# How Should We Use It?
 
 
 
@@ -16,7 +16,7 @@
 
 
 
-##Some Useful Tips
+## Some Useful Tips
 - Do Not Repeat Yourself
 - Encapsulate What Is Vary
 - Code With Interface
