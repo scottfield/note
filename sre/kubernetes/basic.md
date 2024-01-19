@@ -1,3 +1,41 @@
+### kubectl Output log flag:
+```shell
+--v=8
+```
+### Set context's default namespace
+```shell
+kubectl config set-context kube-cluster-ctx --namespace=my-namespace
+```
+### how to specify flags:
+```shell
+k top pods -n cpc --sort-by=memory
+```
+
+### get all api resources:
+```shell
+kubectl api-resources --sort-by=name
+```
+### Get logs at specific time and limit output only 100 characters each line:
+```shell
+k logs  pod_name -n namespace -c container_name --since-time=2020-03-04T21:00:57Z --limit-bytes=10000 --timestamps=true|cut -c1-100
+```
+### Connect to pod's service by port forwarding:
+```shell
+kubectl port-forward pod_name service_port:local_port
+```
+
+### Copy logs from pod to local machine:
+```shell
+kubectl cp cpc-cart-app-55b558879-psgh5:/home/app/tomcat/bin/threaddump.txt cart_threaddump.txt -c cpc-cart-app -n cpc
+```
+
+### Check cluster context information:
+```shell
+kubectl config get-contexts
+kubectl config use-context
+kubectl config current-context
+```
+
 ### create a deployment
 ```
 kubectl create deployment {deployment_name} --image={docker_image_name}
@@ -66,6 +104,19 @@ kubectl rollout status deployment/{deployment_name}
 ```
 kubectl rollout undo deployments/{deployment_name}
 ```
+### how to trigger a threaddump in a container and save it into local machine:
+```shell
+k exec  pod_name  -c container_name -n namespace jstack 16 > test.tdump
+```
+
+### Get All Pod Image information(please use below command in bash shell):
+kubectl get pods -n namespace -o jsonpath="{..image}" |tr -s '[[:space:]]' '\n' |sort |uniq -c > images.txt
+
+### Check if node rebooted:
+k get events | findstr Reboot
+
+### rolling restart deployment:
+kubectl rollout restart deployment <deployment-name>  -n <namespace>
 ## what's Service ?
 A Service in Kubernetes is an abstraction which defines a logical set of Pods and a policy by which to access them.
 Services enable a loose coupling between dependent Pods.

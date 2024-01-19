@@ -231,3 +231,48 @@
 #抓取网卡eth0上的2000条tcp协议的packets并保存为文件tcpanalyze.pcap
 tcpdump -i eth0 -c 2000 -w tcpanalyze.pcap tcp
 ```
+
+- Remove line endings
+    ```shell
+    tr -d '\n' < input.txt > output.txt
+    ```
+
+- Use netcat to determine if service is healthy:
+    ```shell
+    nc  -v mariadb.cpc 3306
+    ```
+
+- use nc to send http request:
+   ```shell
+    echo -e "GET /nc.1 HTTPs/1.1\r\nHost: www.geeksforgeeks.org\r\n\r\n" | nc
+   ```
+- split large file:
+    ```shell
+    split -n 5  --additional-suffix .log ../large-file-0.log small-file-0
+    ```
+- how to count the total lines of a file:
+    ```shell
+    wc -l filename
+    ```
+- get linux process environment:
+    ```shell
+      cat /proc/74348/environ | tr '\0' '\n'
+    ```
+- use grep to extract logs at specific time range
+    ```shell
+    grep -E '2019-08-21 11:40:31|2019-08-21 11:40:33' rawlogs.log
+    ```
+- cornjob expression
+    ```shell
+    # ┌───────────── minute (0 - 59)
+    # │ ┌───────────── hour (0 - 23)
+    # │ │ ┌───────────── day of the month (1 - 31)
+    # │ │ │ ┌───────────── month (1 - 12)
+    # │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
+    # │ │ │ │ │                                   7 is also Sunday on some systems)
+    # │ │ │ │ │
+    # │ │ │ │ │
+    # * * * * * <command to execute>
+    
+    From <https://en.wikipedia.org/wiki/Cron> 
+    ```
