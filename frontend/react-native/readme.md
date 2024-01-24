@@ -17,3 +17,6 @@
     Then you can run the simulator with specific device name:
     npm run ios -- --simulator="iPhone 14 Pro (16.0)"
 
+
+### shutdown simulator
+    xcrun simctl shutdown <simulator id>
