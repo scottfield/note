@@ -20,3 +20,7 @@
 
 ### shutdown simulator
     xcrun simctl shutdown <simulator id>
+
+
+### Check that if your build target is Debug
+    Xcode Product => Scheme => Edit Scheme => Debug (and not release ! )
