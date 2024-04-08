@@ -38,6 +38,13 @@ docker pull image_name
 ###list docker containers
 ```
 docker container ls
+or
+docker ps
+```
+
+### start and exited docker container
+```shell
+docker start container_id
 ```
 
 ###use bash to explore docker container
