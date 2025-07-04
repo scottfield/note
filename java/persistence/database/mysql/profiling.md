@@ -1,8 +1,8 @@
-###check database supported store engines
+### check database supported store engines
 ```
 mysql>  SELECT * FROM INFORMATION_SCHEMA.ENGINES;
 ```
-###check a query's profiling data
+### check a query's profiling data
 ```
 mysql> SET SESSION profiling = 1;#0表示关闭,1表示开启
 mysql> USE profile_sampling;
@@ -10,17 +10,17 @@ mysql> SELECT * FROM users WHERE name = 'Jesse';
 mysql> SHOW PROFILES;
 mysql> SHOW PROFILE CPU, SWAPS, BLOCK IO, MEMORY, CONTEXT SWITCHES, IPC, PAGE FAULTS, SOURCE FOR QUERY queryId;//get query id from SHOW PROFILES
 ```
-###show a query's explain plan
+### show a query's explain plan
 ```
 mysql> EXPLAIN your_query
 ```
-###show index of table
+### show index of table
 ```
 mysql> SHOW INDEX FROM tbl_name
 ```
 
-###use profiling schema to profile sql
-#####setup:
+### use profiling schema to profile sql
+##### setup:
 ```
 mysql> UPDATE performance_schema.setup_actors
        SET ENABLED = 'NO', HISTORY = 'NO'
@@ -46,7 +46,7 @@ mysql> UPDATE performance_schema.setup_consumers
        WHERE NAME LIKE '%events_stages_%';
 
 ``` 
-#####check query statistics:
+##### check query statistics:
 ```
 mysql> SELECT EVENT_ID, TRUNCATE(TIMER_WAIT/1000000000000,6) as Duration, SQL_TEXT
        FROM performance_schema.events_statements_history_long WHERE SQL_TEXT like '%10001%';

@@ -1,4 +1,4 @@
-###OSI network model
+### OSI network model
 7.application layer(HTTP,HTTPS,FTP,SMTP)
 6.presentation layer(MIME,SSL/TLS,XDR)
 5.session layer(Sockets)
@@ -14,7 +14,7 @@
     It converts the digital bits into electrical, radio, or optical signals
 
 
-###TCP/IP network model
+### TCP/IP network model
 4.application layer(HTTP,FTP)
      providing process-to-process data exchange for applications
 3.transport layer(TCP,UDP,SCTP)
@@ -24,7 +24,7 @@
 1.link layer(MAC,LLC)
     containing communication methods for data that remains within a single network segment (link)
 
-###use fiddler to analyze java application network
+### use fiddler to analyze java application network
 ```
 start up java application with the following jvm options:
 -Dhttp.proxyHost=localhost

@@ -11,9 +11,10 @@ curl -X PUT 'localhost:9200/customer'
 
 #### add document to existing index
 ```shell
-curl -X PUT "localhost:9200/customer/_doc/1" -H 'Content-Type: application/json' -d '
+curl -X PUT "localhost:9200/customer/_doc/2" -H 'Content-Type: application/json' -d '
 {
-  "name": "John Doe"
+  "name": "John Doe",
+  "age": 20
 }'
 ```
 
@@ -24,7 +25,7 @@ curl -H "Content-Type: application/json" -X POST "localhost:9200/bank/_bulk?pret
 
 #### get document by ID
 ```shell
-curl "localhost:9200/customer/_doc/1?pretty"
+curl "localhost:9200/customer/_doc/2?pretty"
 ```
 
 

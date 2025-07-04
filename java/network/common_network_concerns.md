@@ -1,4 +1,4 @@
-####how to configure custom DNS server
+#### how to configure custom DNS server
 ```
 configure below system properties to specify name service's address
 -Dsun.net.spi.nameservice.nameservers=8.8.8.8

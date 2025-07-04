@@ -1,4 +1,4 @@
-###微服务的优缺点
+### 微服务的优缺点
 优点：
 - 独立部署，发布周期短，在发生错误时能很好的进行隔离
 - 代码模块化，按照业务功能进行划分，更好的代码可读性（更好理解）
@@ -15,7 +15,7 @@
 - 增加整体系统的复杂性
 - 问题定位更加困难，不同系统间可能日志格式各不相同，需要有能力把各个系统日志串连起来的能力
 
-###服务治理
+### 服务治理
 - 服务注册发现：Eureke，Nacos，Consul，ZooKeeper
 - 服务配置：Spring Cloud Config，Archaius
 - 服务熔断：Hystrix，resilience4j
@@ -25,9 +25,9 @@
 - 日志采集：logback，ElasticSearch
 - 监控平台：Promethues，Kibana，grafna，Spring boot admin
 
-###服务网格化(service mesh)
+### 服务网格化(service mesh)
 
-###如何评估一门语言
+### 如何评估一门语言
 - 类型系统
     良好的类型系统应该具备优秀的类型推断能力，以及高级抽象数据类型支持(例如泛型)可以将很多编程错误在编译时期就能检查出来，这将极大的提高代码的稳定性
 - 学习难度
@@ -50,40 +50,40 @@
      一般而言，新设计的语言能更好的支持当下的软硬件，而且通常也会修复已有语言的一些痛点
 
 
-###常用技术
-####负载均衡
-#####LVS(Linux Virtual Server)网络接入层
+### 常用技术
+#### 负载均衡
+##### LVS(Linux Virtual Server)网络接入层
 - LVS/NAT(LVS需同时处理请求/响应流量，请求和响应都需要经过LVS设备，会导致性能瓶颈)
 - LVS/DR(LVS只需处理请求流量，LVS通过修改源mac地址来实现不改源IP而能路由请求到对应的后端服务，后端服务需要和LVS部署在同一个机房)
 - LVS/TUNNEL(LVS只需处理请求流量，LVS可以跨机房调用后端服务，但是需要后端服务支持tunnel模式对IP报文进行二次解析)
-#####nginx(openresty)应用层接入
--分布式会话
+##### nginx(openresty)应用层接入
+- 分布式会话
 
-#Dubbo服务治理
+# Dubbo服务治理
 
 
-####消息中间件
+#### 消息中间件
 - activemq
 - kafka(适合流式处理)
 - rocketmq(支持事务消息)
 
-####任务调度
+#### 任务调度
 - Timer (单线程执行环境，任务异常将导致整个调度程序结束，所有任务是按顺序执行,支持定时触发和规定频率触发以及延迟触发)
 - ScheduledExecutorService (多线程执行环境,自动补偿异常退出线程，支持定时触发和规定频率触发以及延迟触发)
 - Quartz(多线程执行环境,自动补偿异常退出线程，支持crontab这种复杂的调度规则以及misfire机制)
 - Elastic Job (支持分布任务调度,任务分片)
 
-####池化技术(线程池，连接池)
+#### 池化技术(线程池，连接池)
 
-####缓存
+#### 缓存
 
-####数据库选型SQL vs NOSQL
+#### 数据库选型SQL vs NOSQL
 
-####服务监控
+#### 服务监控
 
-####服务隔离,队列，限流，熔断与降级
+#### 服务隔离,队列，限流，熔断与降级
 
-####服务间的通信方式
+#### 服务间的通信方式
 - gRPC
 PROS:
     - Lightweight messages(up to 30% smaller in size than JSON)
@@ -92,7 +92,7 @@ PROS:
     - more connection options(not only support request-response style communication, also support data streaming)
 Cons:
     - community is not as mature as REST
-    - browser dont support gRPC call
+    - browser not support gRPC call
     - lack of debugging tools such as curl, postman
     - Not human-readable format
     - steeper learning curve
